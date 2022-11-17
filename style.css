@@ -6,6 +6,7 @@
 html,
 body {
     height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -44,8 +45,8 @@ body {
 }
 
 .box {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     background-color: #EE9C21;
@@ -57,6 +58,30 @@ body {
     padding: 10px;
     font-size: 16px;
     border-bottom: 3px solid #A34E24;
+}
+
+.box .buttons {
+    display: flex;
+    flex: 2;
+    justify-content: space-between;
+}
+
+.box .buttons button {
+    height: 40px;
+    width: 80px;
+    font-size: 16px;
+}
+
+.box .buttons button,
+#header button {
+    background-color: #A34E24;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.box .buttons button:active {
+    border: 5px solid green;
 }
 
 #footer {
