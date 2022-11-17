@@ -43,6 +43,22 @@ body {
     background-color: #F9DF8D;
 }
 
+.box {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    background-color: #EE9C21;
+    border: 3px solid #A34E24;
+}
+
+.box > div {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 3px solid #A34E24;
+}
+
 #footer {
     height: 50px;
     display: flex;
