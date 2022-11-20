@@ -2,6 +2,11 @@
 
     "use strict"
 
+    const newBookBtn = document.querySelector("#newbook");
+    const myModal = document.getElementById("myModal");
+    const myForm = document.getElementById("myForm");
+    const closeBtn = document.querySelector(".btnclose");
+
     let myLibrary = [
         
     ];
@@ -25,26 +30,21 @@
         myLibrary.push(book);
     }
 
-    const newBookBtn = document.querySelector("#newbook");
-    const myModal = document.getElementById("myModal");
-    const myForm = document.getElementById("myForm");
-    const closeBtn = document.querySelector(".btnclose");
-
-    newBookBtn.addEventListener("click",function(){
+    function toggleModal() {
         if (myModal.style.display === "none") {
             myModal.style.display = "block";
             myForm.style.display = "block";
         }
         else {
-            closeModal();
-        }
-    });
-
-    closeBtn.addEventListener("click",closeModal)
-
-    function closeModal() {
-        myModal.style.display = "none";
-        myForm.style.display = "none";    
+            myModal.style.display = "none";
+            myForm.style.display = "none";    
+        }       
     }
+
+    newBookBtn.addEventListener("click",toggleModal)
+
+    closeBtn.addEventListener("click",toggleModal)
+
+
 
 })()
