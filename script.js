@@ -31,7 +31,7 @@
     }
 
     function toggleModal() {
-        if (myModal.style.display === "none") {
+        if (myModal.style.display === "none" || myModal.style.display === "") {
             myModal.style.display = "block";
             myForm.style.display = "block";
         }
@@ -42,7 +42,6 @@
     }
 
     newBookBtn.addEventListener("click",toggleModal)
-
     closeBtn.addEventListener("click",toggleModal)
 
 
