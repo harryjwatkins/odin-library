@@ -26,19 +26,25 @@
     }
 
     const newBookBtn = document.querySelector("#newbook");
+    const myModal = document.getElementById("myModal");
     const myForm = document.getElementById("myForm");
+    const closeBtn = document.querySelector(".btnclose");
 
     newBookBtn.addEventListener("click",function(){
-        if (myForm.style.display === "none") {
+        if (myModal.style.display === "none") {
+            myModal.style.display = "block";
             myForm.style.display = "block";
         }
         else {
-            myForm.style.display = "none";
+            closeModal();
         }
-            
     });
 
-    
-    
+    closeBtn.addEventListener("click",closeModal)
+
+    function closeModal() {
+        myModal.style.display = "none";
+        myForm.style.display = "none";    
+    }
 
 })()
