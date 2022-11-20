@@ -25,8 +25,19 @@
         myLibrary.push(book);
     }
 
-    const harryPotter = new Book ("Harry Potter", "J.K Rowling", 400, true);
-    addBookToLibrary(harryPotter);
+    const newBookBtn = document.querySelector("#newbook");
+    const myForm = document.getElementById("myForm");
+
+    newBookBtn.addEventListener("click",function(){
+        if (myForm.style.display === "none") {
+            myForm.style.display = "block";
+        }
+        else {
+            myForm.style.display = "none";
+        }
+            
+    });
+
     
     
 

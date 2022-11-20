@@ -37,6 +37,17 @@ body {
     margin-left: auto;
 }
 
+.form-popup {
+    display: none;
+    background-color: #EE9C21;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: auto;  
+}
+
 #library {
     flex: 1;
     margin: 0px 150px 0 150px;
@@ -80,7 +91,8 @@ body {
     border-radius: 10px;
 }
 
-.box .buttons button:active {
+.box .buttons button:active,
+#header button:active {
     border: 5px solid green;
 }
 
@@ -92,3 +104,4 @@ body {
     background-color: #A34E24;
     margin: 0px 150px 0 150px;
 }
+
