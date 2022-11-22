@@ -41,6 +41,7 @@
 
     function toggleModal() {
         if (myModal.style.display === "none" || myModal.style.display === "") {
+            clearForm();
             myModal.style.display = "block";
             myForm.style.display = "block";
         }
@@ -51,14 +52,14 @@
         }       
     }
 
-    function createBookFromForm (e) {
-        e.preventDefault();
+    function createBookFromForm (evt) {
         const inputArray = Array.from(formInputs);
         let resultArr = inputArray.reduce((acc,input) => ({...acc,[input.name]: input.value}),{})
         resultArr.read = inputArray[(inputArray.length-2)].checked;
         const newBook = new Book (resultArr.title, resultArr.author, resultArr.pages, resultArr.read);
         addBookToLibrary(newBook);
         createCard(newBook);
+        evt.preventDefault();
     }
 
     function createCard (book) {
@@ -98,7 +99,7 @@
 
     newBookBtn.addEventListener("click",toggleModal);
     closeBtn.addEventListener("click",toggleModal);
-    addBtn.addEventListener("click", createBookFromForm);
+    myForm.addEventListener("submit", createBookFromForm);
     createCard(new Book ("Harry", "J.K", 500, true));
     
 })()
