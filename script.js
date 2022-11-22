@@ -8,6 +8,7 @@
     const closeBtn = document.querySelector(".btnclose");
     const addBtn = document.querySelector(".btn");
     const formInputs = document.querySelectorAll("input");
+    const library = document.getElementById("library");
 
     let myLibrary = [
         
@@ -58,8 +59,45 @@
         addBookToLibrary(new Book (resultArr.title, resultArr.author, resultArr.pages, resultArr.read));
     }
 
+    function createCard (book) {
+        const boxDiv = document.createElement("div");
+        boxDiv.className = "box";
+
+        const titleDiv = document.createElement("div");
+        const authorDiv = document.createElement("div");
+        const pagesDiv = document.createElement("div");
+        const readDiv = document.createElement("div");
+
+        const buttonsDiv = document.createElement("div");
+        const readButton = document.createElement("button");
+        const deleteButton = document.createElement("button");
+
+        readButton.setAttribute("type","submit");
+        deleteButton.setAttribute("type","submit");
+        readButton.textContent = "Read?";
+        deleteButton.textContent = "Delete"
+        buttonsDiv.className = "buttons";
+
+        let arr = [titleDiv, authorDiv, pagesDiv, readDiv, buttonsDiv];
+        for (let each of arr) {
+            boxDiv.appendChild(each);
+        }
+
+        titleDiv.textContent = book.title;
+        authorDiv.textContent = `by ${book.author}`;
+        pagesDiv.textContent = `${book.pages} pages`;
+        (book.haveRead === true) ? readDiv.textContent = "Read" : readDiv.textContent = "Not Read";
+        
+        buttonsDiv.appendChild(readButton);
+        buttonsDiv.appendChild(deleteButton);
+        library.appendChild(boxDiv);
+
+        
+    }
+
     newBookBtn.addEventListener("click",toggleModal);
     closeBtn.addEventListener("click",toggleModal);
     addBtn.addEventListener("click", createBookFromForm);
+    createCard(new Book ("Harry", "J.K", 500, true));
     
 })()
