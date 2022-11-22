@@ -6,6 +6,7 @@
     const myModal = document.getElementById("myModal");
     const myForm = document.getElementById("myForm");
     const closeBtn = document.querySelector(".btnclose");
+    const addBtn = document.querySelector(".btn");
     const formInputs = document.querySelectorAll("input");
 
     let myLibrary = [
@@ -49,8 +50,16 @@
         }       
     }
 
+    function createBookFromForm (e) {
+        e.preventDefault();
+        const inputArray = Array.from(formInputs);
+        let resultArr = inputArray.reduce((acc,input) => ({...acc,[input.name]: input.value}),{})
+        resultArr.read = inputArray[(inputArray.length-2)].checked;
+        addBookToLibrary(new Book (resultArr.title, resultArr.author, resultArr.pages, resultArr.read));
+    }
+
     newBookBtn.addEventListener("click",toggleModal);
     closeBtn.addEventListener("click",toggleModal);
-
-
+    addBtn.addEventListener("click", createBookFromForm);
+    
 })()

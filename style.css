@@ -91,9 +91,14 @@ body {
     font-size: 18px;
 }
 
+#radiobtns {
+    padding: 0 20px 0 20px;
+}
+
 .form-container button {
     height: 75px;
     width: 30%;
+    font-size: 18px;
 }
 
 #btn-container {
