@@ -56,7 +56,9 @@
         const inputArray = Array.from(formInputs);
         let resultArr = inputArray.reduce((acc,input) => ({...acc,[input.name]: input.value}),{})
         resultArr.read = inputArray[(inputArray.length-2)].checked;
-        addBookToLibrary(new Book (resultArr.title, resultArr.author, resultArr.pages, resultArr.read));
+        const newBook = new Book (resultArr.title, resultArr.author, resultArr.pages, resultArr.read);
+        addBookToLibrary(newBook);
+        createCard(newBook);
     }
 
     function createCard (book) {
@@ -91,8 +93,7 @@
         buttonsDiv.appendChild(readButton);
         buttonsDiv.appendChild(deleteButton);
         library.appendChild(boxDiv);
-
-        
+ 
     }
 
     newBookBtn.addEventListener("click",toggleModal);
