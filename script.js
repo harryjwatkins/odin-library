@@ -9,7 +9,8 @@
     const addBtn = document.querySelector(".btn");
     const formInputs = document.querySelectorAll("input");
     const library = document.getElementById("library");
-
+    let readBtn = document.querySelectorAll("button.delbtn")
+    
     let myLibrary = [
         
     ];
@@ -31,6 +32,10 @@
     function addBookToLibrary(newBook) {
         const book = [newBook.title, newBook.author, newBook.pages, newBook.haveRead];
         myLibrary.push(book);
+    }
+
+    function removeBookFromLibrary(book) {
+        myLibrary.indexOf(book.title);
     }
 
     function clearForm() {
@@ -59,8 +64,10 @@
         const newBook = new Book (resultArr.title, resultArr.author, resultArr.pages, resultArr.read);
         addBookToLibrary(newBook);
         createCard(newBook);
+        clearForm();
         evt.preventDefault();
     }
+
 
     function createCard (book) {
         const boxDiv = document.createElement("div");
@@ -77,6 +84,7 @@
 
         readButton.setAttribute("type","submit");
         deleteButton.setAttribute("type","submit");
+        deleteButton.setAttribute("class","delbtn")
         readButton.textContent = "Read?";
         deleteButton.textContent = "Delete"
         buttonsDiv.className = "buttons";
@@ -84,6 +92,7 @@
         let arr = [titleDiv, authorDiv, pagesDiv, readDiv, buttonsDiv];
         for (let each of arr) {
             boxDiv.appendChild(each);
+
         }
 
         titleDiv.textContent = book.title;
@@ -94,12 +103,23 @@
         buttonsDiv.appendChild(readButton);
         buttonsDiv.appendChild(deleteButton);
         library.appendChild(boxDiv);
+
+        // Delete Book
+        deleteButton.addEventListener("click",function(){
+            library.removeChild(boxDiv);
+
+            for (let i=0; i<myLibrary.length; i++) {
+                if (myLibrary[i][0] === book.title && myLibrary[i][1] === book.author 
+                    && myLibrary[i][2] === book.pages && myLibrary[i][3] === book.haveRead){
+                        myLibrary.splice(i,1);
+                    }
+            }
+        });
  
     }
 
     newBookBtn.addEventListener("click",toggleModal);
     closeBtn.addEventListener("click",toggleModal);
     myForm.addEventListener("submit", createBookFromForm);
-    createCard(new Book ("Harry", "J.K", 500, true));
-    
+
 })()
