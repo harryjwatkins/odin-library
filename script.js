@@ -34,9 +34,6 @@
         myLibrary.push(book);
     }
 
-    function removeBookFromLibrary(book) {
-        myLibrary.indexOf(book.title);
-    }
 
     function clearForm() {
         for (const formInput of formInputs) {
@@ -85,7 +82,6 @@
         readButton.setAttribute("type","submit");
         deleteButton.setAttribute("type","submit");
         deleteButton.setAttribute("class","delbtn")
-        readButton.textContent = "Read?";
         deleteButton.textContent = "Delete"
         buttonsDiv.className = "buttons";
 
@@ -98,6 +94,7 @@
         titleDiv.textContent = book.title;
         authorDiv.textContent = `by ${book.author}`;
         pagesDiv.textContent = `${book.pages} pages`;
+        (book.haveRead === true) ? readButton.textContent = "Not Read?" : readButton.textContent = "Read?";
         (book.haveRead === true) ? readDiv.textContent = "Read" : readDiv.textContent = "Not Read";
         
         buttonsDiv.appendChild(readButton);
@@ -113,6 +110,19 @@
                     && myLibrary[i][2] === book.pages && myLibrary[i][3] === book.haveRead){
                         myLibrary.splice(i,1);
                     }
+            }
+        });
+
+        // Change read status
+        readButton.addEventListener("click", function() {
+            if (book.haveRead === true) {
+                book.haveRead = false;
+                readButton.textContent = "Read?";
+                readDiv.textContent = "Not Read"
+            } else if (book.haveRead === false) {
+                book.haveRead = true;
+                readButton.textContent = "Not Read?";
+                readDiv.textContent = "Read"
             }
         });
  
